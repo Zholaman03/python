@@ -1,0 +1,17 @@
+{% extends 'main/layot.html' %}
+
+{% block content %}
+
+
+<div class="block">
+    <form method="post">
+    <div class="d-flex">
+        {% csrf_token %}
+        <input type="submit" value="Удалить этот текст" class="btn btn-danger">
+        <a href="{% url 'home' %}" class="btn btn-info">Назад</a>
+    </div>
+    <div class="res fs-4 text-light border border-warning p-2 rounded">{{texts.title}}</div>
+</form>
+</div>
+
+{% endblock %}

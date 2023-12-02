@@ -1,0 +1,29 @@
+{% extends 'main/layot.html' %}
+
+{% block content %}
+
+
+<div class="block">
+    <form method="post">
+    {% if error != '' %}
+        <div class="w-100 bg-danger rounded fs-5 p-1 mb-2 text-white">{{error}}</div>
+    {% endif %}
+    <div class="d-flex">
+        {% csrf_token %}
+        {{ form.title }}
+        <input type="submit" value="Отправить" class="btn btn-success">
+    </div>
+   
+        
+   
+    {% if result %}
+        {% for i in result %}
+            <div class="res fs-4 text-light border border-warning p-2 rounded d-flex justify-content-between">{{i}}  <a href="{% url 'delete-txt' i.id %}" class="btn btn-danger">Удалить</a></div>
+        {% endfor %}
+    {% else %}
+        <div class="res fs-4 text-light border border-danger p-2 rounded text-center">Пустой</div>
+    {% endif %}
+</form>
+</div>
+
+{% endblock %}
